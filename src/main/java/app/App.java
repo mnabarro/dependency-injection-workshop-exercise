@@ -3,6 +3,7 @@ package app;
 import app.dependencies.Registration;
 import app.dependencies.RegistrationsReader;
 import app.core.Contact;
+import app.primary.CLI;
 import app.primary.Controller;
 import app.primary.Presenter;
 
@@ -11,7 +12,7 @@ import java.util.List;
 
 public class App {
     public static void main(String[] args) throws IOException {
-        Presenter presenter = new Presenter();
+        Presenter presenter = new Presenter(new CLI());
         Controller controller = new Controller();
         List<Registration> registrations = new RegistrationsReader().getRegistrations();
 

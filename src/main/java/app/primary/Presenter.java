@@ -6,7 +6,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class Presenter {
-    private final CLI cli = new CLI();
+    private final CLI cli;
+
+    public Presenter(CLI cli) {
+        this.cli = cli;
+    }
 
     public Contact requestContactChoice(List<Contact> contacts) {
         cli.printWhiteSpace();
