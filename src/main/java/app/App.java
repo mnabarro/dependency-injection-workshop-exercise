@@ -2,6 +2,7 @@ package app;
 
 import app.core.GetContacts;
 import app.core.SendMessage;
+import app.core.SmsSender;
 import app.dependencies.Registration;
 import app.dependencies.RegistrationsReader;
 import app.core.Contact;
@@ -10,6 +11,7 @@ import app.primary.Controller;
 import app.primary.Presenter;
 
 import app.secondary.ContactRepository;
+import app.secondary.DefaultSmsSender;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,7 +26,9 @@ public class App {
 
         ContactRepository contactRepository = new ContactRepository();
         GetContacts getContacts = new GetContacts(contactRepository);
-        SendMessage sendMessage = new SendMessage();
+
+        SmsSender smsSender = new DefaultSmsSender();
+        SendMessage sendMessage = new SendMessage(smsSender);
         Controller controller = new Controller(getContacts, sendMessage);
 
         List<Registration> registrations = new RegistrationsReader().getRegistrations();

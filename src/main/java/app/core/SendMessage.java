@@ -1,11 +1,13 @@
 package app.core;
 
-import app.secondary.DefaultSmsSender;
-
 import java.time.LocalDate;
 
 public class SendMessage {
-    private final SmsSender smsSender = new DefaultSmsSender();
+    private final SmsSender smsSender;
+
+    public SendMessage(SmsSender smsSender) {
+        this.smsSender = smsSender;
+    }
 
     public void execute(Message message) {
         String content = getSeasonEmoji() + message.content();
