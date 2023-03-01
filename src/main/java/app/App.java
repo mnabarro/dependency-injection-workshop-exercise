@@ -9,6 +9,7 @@ import app.primary.CLI;
 import app.primary.Controller;
 import app.primary.Presenter;
 
+import app.secondary.ContactRepository;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,7 +22,8 @@ public class App {
         CLI cli = new CLI(bufferedReader);
         Presenter presenter = new Presenter(cli);
 
-        GetContacts getContacts = new GetContacts();
+        ContactRepository contactRepository = new ContactRepository();
+        GetContacts getContacts = new GetContacts(contactRepository);
         SendMessage sendMessage = new SendMessage();
         Controller controller = new Controller(getContacts, sendMessage);
 
