@@ -2,10 +2,13 @@ package app.primary;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class CLI {
-    private final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader reader;
+
+    public CLI(BufferedReader reader) {
+        this.reader = reader;
+    }
 
     public void display(String content) {
         System.out.println(content);
