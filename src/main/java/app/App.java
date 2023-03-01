@@ -1,5 +1,7 @@
 package app;
 
+import app.core.GetContacts;
+import app.core.SendMessage;
 import app.dependencies.Registration;
 import app.dependencies.RegistrationsReader;
 import app.core.Contact;
@@ -19,7 +21,10 @@ public class App {
         CLI cli = new CLI(bufferedReader);
         Presenter presenter = new Presenter(cli);
 
-        Controller controller = new Controller();
+        GetContacts getContacts = new GetContacts();
+        SendMessage sendMessage = new SendMessage();
+        Controller controller = new Controller(getContacts, sendMessage);
+
         List<Registration> registrations = new RegistrationsReader().getRegistrations();
 
         System.out.println(registrations);
