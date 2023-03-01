@@ -24,8 +24,8 @@ class SendMessageTest {
   @InjectMocks
   private SendMessage sendMessage;
 
-    @Captor
-    ArgumentCaptor<String> messageContentCaptor;
+  @Captor
+  ArgumentCaptor<String> messageContentCaptor;
 
   @BeforeEach
   void setup() {
