@@ -9,14 +9,14 @@ public class SendMessage {
         this.smsSender = smsSender;
     }
 
-    public void execute(Message message) {
-        String content = getSeasonEmoji() + message.content();
+    public void execute(Message message, LocalDate date) {
+        String content = getSeasonEmoji(date) + message.content();
 
         smsSender.send(message.destination().telephone(), content);
     }
 
-    private String getSeasonEmoji() {
-        LocalDate date = LocalDate.now();
+    private String getSeasonEmoji(LocalDate date) {
+
         int month = date.getMonthValue();
         int day = date.getDayOfMonth();
 

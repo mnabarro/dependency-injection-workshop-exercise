@@ -5,6 +5,7 @@ import app.core.GetContacts;
 import app.core.Message;
 import app.core.SendMessage;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Controller {
@@ -22,6 +23,7 @@ public class Controller {
 
     public void sendMessage(Contact contact, String content) {
         Message message = new Message(content, contact);
-        sendMessage.execute(message);
+        LocalDate date = LocalDate.now();
+        sendMessage.execute(message, date);
     }
 }

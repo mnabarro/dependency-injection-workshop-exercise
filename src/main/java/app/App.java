@@ -22,6 +22,7 @@ public class App {
         InputStreamReader inputStreamReader = new InputStreamReader(System.in);
         BufferedReader bufferedReader  = new BufferedReader(inputStreamReader);
         CLI cli = new CLI(bufferedReader);
+
         Presenter presenter = new Presenter(cli);
 
         ContactRepository contactRepository = new ContactRepository();
@@ -29,6 +30,7 @@ public class App {
 
         SmsSender smsSender = new DefaultSmsSender();
         SendMessage sendMessage = new SendMessage(smsSender);
+
         Controller controller = new Controller(getContacts, sendMessage);
 
         List<Registration> registrations = new RegistrationsReader().getRegistrations();
