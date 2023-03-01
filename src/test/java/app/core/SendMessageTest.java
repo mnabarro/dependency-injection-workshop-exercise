@@ -52,7 +52,10 @@ class SendMessageTest {
 
     @Test
     public void itPrependsASpringEmojiInSpring() {
-        // TODO()
+        sendMessage.execute(message, dateSpring);
+        verify(smsSender).send(any(), messageContentCaptor.capture());
+        String messageContent = messageContentCaptor.getValue();
+        Assertions.assertThat(messageContent).startsWith(emojiSpring);
     }
 
     @Test
