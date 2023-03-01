@@ -60,7 +60,10 @@ class SendMessageTest {
 
     @Test
     public void itPrependsASummerEmojiInSummer() {
-        // TODO()
+        sendMessage.execute(message, dateSummer);
+        verify(smsSender).send(any(), messageContentCaptor.capture());
+        String messageContent = messageContentCaptor.getValue();
+        Assertions.assertThat(messageContent).startsWith(emojiSummer);
     }
 
     @Test
