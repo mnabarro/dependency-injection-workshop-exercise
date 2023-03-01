@@ -68,6 +68,9 @@ class SendMessageTest {
 
     @Test
     public void itPrependsAnAutumnEmojiInAutumn() {
-        // TODO()
+        sendMessage.execute(message, dateAutumn);
+        verify(smsSender).send(any(), messageContentCaptor.capture());
+        String messageContent = messageContentCaptor.getValue();
+        Assertions.assertThat(messageContent).startsWith(emojiAutumn);
     }
 }
